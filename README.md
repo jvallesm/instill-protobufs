@@ -30,6 +30,15 @@ we have to manually re-sync the public documentation.
 - On `main` branch merge: update staging docs
 - On version PR merge: update production docs
 
+### ReadMe setup
+
+2 versions per (major) version: public and private.
+
+![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/e7c5aa6e-52db-498e-a27c-7fa1506dc089)
+
+As we have 3 docs per version, we can either keep the IDs as variables in our
+workflow or obtain them from the ReadMe API.
+
 ## ⏭️ Step 2: one public version per release + a staging version for the next release.
 
 - On `main` branch merge: update staging docs
