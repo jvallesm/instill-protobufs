@@ -39,7 +39,7 @@ we have to manually re-sync the public documentation.
 As we have 3 docs per version, we can either keep the IDs as variables in our
 workflow or obtain them from the ReadMe API.
 
-## 🌀 Step 2: one public version per release + a staging version for the next release.
+## ✅ Step 2: one public version per release + a staging version for the next release.
 
 - On `main` branch merge: update staging docs
 - On version PR merge: create new (main, beta, public) version with staging one
@@ -50,7 +50,7 @@ workflow or obtain them from the ReadMe API.
 1 public version per Core release.
 1 private version per major Core release.
 
-![ReadMe versions - TODO update with more versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/8ee496d9-a568-4de5-9f16-f580dd335354)
+![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/e17e4a00-fbbb-4288-88ed-aafe670287ac)
 
 We can keep the private API IDs constant, then create new main versions from
 them as releases occur.
