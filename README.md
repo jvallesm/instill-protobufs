@@ -1,36 +1,49 @@
 # Instill AI Protobufs
 
-This repository is the interface definitions of the APIs of [Instill
-Core](https://github.com/instill-ai/core), [Instill
-Model](https://github.com/instill-ai/model), and [Instill
-VDP](https://github.com/instill-ai/vdp) that support both REST and gRPC
-protocols. You can also use these definitions with open source tools to generate
-client libraries, documentation, and other artifacts.
+This repository is a fork of
+[instill-ai/protobufs](https://github.com/instill-ai/protobufs/) that serves as
+a playground for developing a GitHub action that syncs the public API reference,
+hosted in [ReadMe](https://openapi.instill.tech/), with the [Instill
+Core](https://github.com/instill-ai/core).
 
-## Overview
 
-The APIs use Protocol Buffers version 3 (proto3) as the Interface Definition
-Language (IDL) to define the API interface and the structure of the payload
-messages. The same interface definition is used for both RESTful (via
-[gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) and RPC versions
-of the API, which can be accessed over different wire protocols:
+## Current status
 
-- **JSON over HTTP**
-- **Protocol Buffers over gRPC**
+There are 3 public OpenAPI references (Core, Model and VDP), which version
+points to the latest Instill Core version (perhaps model should have a different
+release version.
 
-## CI/CD
+Every time a new Instill Core release is published, a [GitHub
+action](https://github.com/instill-ai/core/actions/workflows/sync-version-with-api-docs.yml)
+creates a PR updating the version in the OpenAPI documents. Once this is merged,
+we have to manually re-sync the public documentation.
 
-1. PR sent to the `main` branch will automatically generate, lint and commit the
-   OpenAPI definitions for the gRPC methods exposed over HTTP. This is done with
-   the `buf generate` and `redocly lint` commands.
-1. PR sent to the `main` branch will trigger `buf-check` job, in which
-   the changes in proto files will be validated via `buf lint` and `buf breaking`
-   commands.
-1. Push to the `main` branch will trigger `push-buf` and `gen-buf-protogen-*`
-   jobs, in which `push-buf` will push the buf module to the [BSR
-   repository](https://buf.build/instill-ai/protobufs) and `gen-buf-protogen-*`
-   will push the auto-gen codes to the corresponding `protogen-*` repository.
-1. Release in `main` branch will trigger `release-protogen-*` job, in which a
-   specific release commit will be pushed to each `protogen-*` repository. This
-   release process makes sure that all auto-gen code repositories will have the
-   same release version as `protobufs`.
+## Goals
+
+- Having a private version of the API references that we can keep in sync with
+  the `main` branch in the `protobufs` repo in order to QA the documentation
+  before syncing the public version.
+- Syncing the public version automatically when the version update PR is merged.
+
+## 🌀 Step 1: with a single public and private version
+
+- On `main` branch merge: update staging docs
+- On version PR merge: update production docs
+
+## ⏭️ Step 2: one public version per release + a staging version for the next release.
+
+- On `main` branch merge: update staging docs
+- On version PR merge:
+  - Action depends on `main` merge workflow
+  - Create new (main, beta, public) version with staging one as base.
+  - Rename staging version to next minor version.
+
+Alternatively:
+- Action depends on `main` merge workflow
+- Rename staging action to remove staging suffix and make it public.
+- Create new staging version.
+
+## ⏭️ Additional feature: display diff on version update PR
+
+- On version PR merge: create tag with version
+- On Core GitHub action PR: generate link with diff.
