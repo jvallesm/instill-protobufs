@@ -3,9 +3,14 @@ name: Sync staging docs in ReadMe 🦉
 on:
   push:
     branches:
-      # This workflow will run every time code is pushed to the `main` branch.
-      # TODO run workflow only when OpenAPI files are changed
+      # This workflow will run every time changes in the OpenAPI docs are
+      # pushed to the `main` branch.
       - main
+    paths:
+      - 'openapiv2/core/**'
+      - 'openapiv2/model/**'
+      - 'openapiv2/vdp/**'
+
 
 jobs:
   rdme-openapi:
