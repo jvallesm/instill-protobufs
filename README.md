@@ -25,32 +25,33 @@ we have to manually re-sync the public documentation.
   before syncing the public version.
 - Syncing the public version automatically when the version update PR is merged.
 
-## 🌀 Step 1: with a single public and private version
+## ✅ Step 1: with a single public and private version
 
 - On `main` branch merge: update staging docs
 - On version PR merge: update production docs
 
 ### ReadMe setup
 
-2 versions per (major) version: public and private.
+2 versions per (major) Core release: public and private.
 
 ![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/e7c5aa6e-52db-498e-a27c-7fa1506dc089)
 
 As we have 3 docs per version, we can either keep the IDs as variables in our
 workflow or obtain them from the ReadMe API.
 
-## ⏭️ Step 2: one public version per release + a staging version for the next release.
+## 🌀 Step 2: one public version per release + a staging version for the next release.
 
 - On `main` branch merge: update staging docs
-- On version PR merge:
-  - Action depends on `main` merge workflow
-  - Create new (main, beta, public) version with staging one as base.
-  - Rename staging version to next minor version.
+- On version PR merge: create new (main, beta, public) version with staging one
+  as base.
 
-Alternatively:
-- Action depends on `main` merge workflow
-- Rename staging action to remove staging suffix and make it public.
-- Create new staging version.
+### ReadMe setup
+
+1 public version per Core release.
+1 private version per major Core release.
+
+We can keep the private API IDs constant, then create new main versions from
+them as releases occur.
 
 ## ⏭️ Additional feature: display diff on version update PR
 
