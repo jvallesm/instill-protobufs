@@ -47,15 +47,15 @@ workflow or obtain them from the ReadMe API.
 
 ### ReadMe setup
 
-1 public version per Core release.
-1 private version per major Core release.
+- 1 public version per Core release.
+- 1 private version per major Core release.
 
 ![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/e17e4a00-fbbb-4288-88ed-aafe670287ac)
 
 We can keep the private API IDs constant, then create new main versions from
 them as releases occur.
 
-## 🌀 Step 2.1: back to single versions
+## ✅ Step 2.1: back to single versions
 
 ReadMe limits the number of versions a subscription plan can have, so adding a
 new version each release cycle does not scale. We'll go back to one public
@@ -65,12 +65,13 @@ different endpoint collections (e.g. `VDP v2`) within the same version.
 
 ### ReadMe setup
 
-1 public version e.g. v0.12.0-beta (version will point to Core release)
-1 staging version v0-beta-staging (we might change the name when Core is at
-1.x.x but we shouldn't create a new version. The IDs of this version will be
-tied to the workflow).
+- 1 public version e.g. v0.12.0-beta (version will point to Core release)
+- 1 staging version v0-beta-staging (we might change the name when Core is at
+    1.x.x but we shouldn't create a new version. The IDs of this version will be
+    tied to the workflow).
 
 ![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/5039d2df-4d62-4560-b317-d352b6e5d17a)
+![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/050fcb61-b112-4d52-af1b-77d812fae087)
 
 We'll keep the private API IDs constant, then create new main versions from
 them as releases occur.
