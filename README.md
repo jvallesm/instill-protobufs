@@ -70,6 +70,11 @@ different endpoint collections (e.g. `VDP v2`) within the same version.
 1.x.x but we shouldn't create a new version. The IDs of this version will be
 tied to the workflow).
 
+![ReadMe versions](https://github.com/jvallesm/instill-protobufs/assets/3977183/5039d2df-4d62-4560-b317-d352b6e5d17a)
+
+We'll keep the private API IDs constant, then create new main versions from
+them as releases occur.
+
 ## ⏭️ Additional feature: display diff on version update PR
 
 - On version PR merge: create tag with version
