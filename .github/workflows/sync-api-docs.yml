@@ -22,7 +22,7 @@ jobs:
       - name: Check out repo 📚
         uses: actions/checkout@v3
         with:
-          # Needed in checkNewRelease to compare with the previous commit.
+          # Needed in check-new-release to compare with the previous commit.
           fetch-depth: 0
 
       - name: Sync Core 🔮
