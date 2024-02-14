@@ -55,6 +55,21 @@ workflow or obtain them from the ReadMe API.
 We can keep the private API IDs constant, then create new main versions from
 them as releases occur.
 
+## 🌀 Step 2.1: back to single versions
+
+ReadMe limits the number of versions a subscription plan can have, so adding a
+new version each release cycle does not scale. We'll go back to one public
+version and a private one. The name of the private version will point to the
+latest Core release and if we need to support several major versions we can have
+different endpoint collections (e.g. `VDP v2`) within the same version.
+
+### ReadMe setup
+
+1 public version e.g. v0.12.0-beta (version will point to Core release)
+1 staging version v0-beta-staging (we might change the name when Core is at
+1.x.x but we shouldn't create a new version. The IDs of this version will be
+tied to the workflow).
+
 ## ⏭️ Additional feature: display diff on version update PR
 
 - On version PR merge: create tag with version
