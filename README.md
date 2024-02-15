@@ -18,6 +18,8 @@ action](https://github.com/instill-ai/core/actions/workflows/sync-version-with-a
 creates a PR updating the version in the OpenAPI documents. Once this is merged,
 we have to manually re-sync the public documentation.
 
+🎉 Changes were merged in https://github.com/instill-ai/protobufs/pull/270
+
 ## Goals
 
 - Having a private version of the API references that we can keep in sync with
